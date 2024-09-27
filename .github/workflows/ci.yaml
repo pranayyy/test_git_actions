@@ -26,3 +26,12 @@ jobs:
       - name: Run tests
         run: |
           python -m unittest discover
+      
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-action@v1.5.0
+        with:
+          sonar-projectKey: personal
+          sonar-org: personal
+          sonar-token: ${{ secrets.SONAR_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
